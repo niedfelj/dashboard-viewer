@@ -57,7 +57,7 @@ xset s off
 xset s noblank
 
 DBUS_SYSTEM_BUS_ADDRESS=unix:path=/host/run/dbus/system_bus_socket \
-  chromium "$URL" --no-sandbox --disable-gpu --disable-software-rasterizer \
+  chromium "$URL" --no-sandbox \
     --window-size=1920,1080 --start-fullscreen --kiosk --incognito \
     --noerrdialogs --disable-translate --no-first-run --fast --fast-start \
     --disable-infobars --disable-features=TranslateUI --disk-cache-dir=/dev/null

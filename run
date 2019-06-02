@@ -53,6 +53,6 @@ xset -dpms
 xset s off
 xset s noblank
 
-chromium "$URL" --no-sandbox
+chromium "$URL" --no-sandbox --disable-gpu --disable-software-rasterizer
 
 sleep infinity

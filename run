@@ -1,6 +1,10 @@
 #!/bin/bash
 # set -euo pipefail
 set -x
+
+# cleanup X lock and sock
+rm -rf /tmp/.X*
+
 URL=${URL:-http://jodel-app.com}
 
 export PASS=${PASS:=root}
@@ -49,6 +53,6 @@ xset -dpms
 xset s off
 xset s noblank
 
-iceweasel "$URL"
+chromium "$URL" --no-sandbox
 
 sleep infinity

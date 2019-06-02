@@ -41,8 +41,9 @@ Xorg &
 X_PID=$!
 
 echo "Waiting for X to be ready"
-export DISPLAY=:0
+export DISPLAY=localhost:0.0
 
+# for balena supervisor versions 1.7.0 and newer (both balenaOS 1.x and 2.x) use this version:
 export DBUS_SYSTEM_BUS_ADDRESS=unix:path=/host/run/dbus/system_bus_socket
 
 # Setting wallpaper and polling X in one!
@@ -55,6 +56,11 @@ xset -dpms
 xset s off
 xset s noblank
 
-chromium "$URL" --no-sandbox --disable-gpu --disable-software-rasterizer
+DBUS_SYSTEM_BUS_ADDRESS=unix:path=/host/run/dbus/system_bus_socket \
+  chromium "$URL" \ 
+    --no-sandbox --disable-gpu --disable-software-rasterizer \
+    --window-size=1920,1080 --start-fullscreen --kiosk --incognito \
+    --noerrdialogs --disable-translate --no-first-run --fast --fast-start \
+    --disable-infobars --disable-features=TranslateUI --disk-cache-dir=/dev/null
 
 sleep infinity
